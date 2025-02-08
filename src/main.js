@@ -18,9 +18,11 @@ camera.position.setZ(30);
 renderer.render( scene, camera );
 
 const earthTexture = new THREE.TextureLoader().load( 'earth.jpg' );
+const mountainsTexture = new THREE.TextureLoader().load( 'mountains.jpg' );
 const geometry = new THREE.SphereGeometry( 15, 64, 32 ); 
-const material = new THREE.MeshStandardMaterial( { map: earthTexture } ); 
+const material = new THREE.MeshStandardMaterial( { map: earthTexture, normalMap: mountainsTexture } ); 
 const sphere = new THREE.Mesh( geometry, material ); 
+
 
 scene.add( sphere );
 
@@ -47,10 +49,38 @@ function addStar() {
 
 Array(500).fill().forEach(addStar);
 
+
+const floatingHead = new THREE.PlaneGeometry( 15, 15 );
+const headTexture = new THREE.TextureLoader().load( 'me.jpg' );
+const headMaterial = new THREE.MeshStandardMaterial({ 
+  map: headTexture, 
+  side: THREE.DoubleSide
+});
+
+const plane = new THREE.Mesh(floatingHead, headMaterial);
+plane.position.set(-10, 0, 30); 
+scene.add( plane );
+
+function moveCamera() {
+  const t = document.body.getBoundingClientRect().top;
+  
+  plane.rotation.x += 0.01;
+  plane.rotation.y += 0.5;
+  plane.rotation.z += 0.5;
+
+  camera.position.x = t * -0.00001;
+  camera.position.y = t * -0.00001;
+  camera.position.z = t * -0.001;
+}
+
+document.body.onscroll = moveCamera
+
+
 function animate () {
   requestAnimationFrame( animate );
-  sphere.rotation.x -= 0.001;
+  sphere.rotation.x -= 0.0003;
   sphere.rotation.y += 0.01;
+
   controls.update();
   renderer.render( scene, camera );
 }
