@@ -47,10 +47,10 @@ function addStar() {
   scene.add(star);
 }
 
-Array(500).fill().forEach(addStar);
+Array(700).fill().forEach(addStar);
 
 
-const floatingHead = new THREE.PlaneGeometry( 15, 15 );
+const floatingHead = new THREE.PlaneGeometry( 12, 12 );
 const headTexture = new THREE.TextureLoader().load( 'me.jpg' );
 const headMaterial = new THREE.MeshStandardMaterial({ 
   map: headTexture, 
@@ -58,23 +58,35 @@ const headMaterial = new THREE.MeshStandardMaterial({
 });
 
 const plane = new THREE.Mesh(floatingHead, headMaterial);
-plane.position.set(-10, 0, 30); 
+plane.position.set(-65, 8, -35); 
 scene.add( plane );
+
+let scrollOffset = 0;
+let baseRadius = 30; // Initial distance from the sphere
+let angle = 0; // Angle around the sphere
+const spiralSpeed = 0.009; // Slower rotation per scroll
+const expansionRate = 0.14; // Slower outward movement
 
 function moveCamera() {
   const t = document.body.getBoundingClientRect().top;
-  
-  plane.rotation.x += 0.01;
-  plane.rotation.y += 0.5;
-  plane.rotation.z += 0.5;
+  scrollOffset = -t * 0.1; // Scale scroll effect
 
-  camera.position.x = t * -0.00001;
-  camera.position.y = t * -0.00001;
-  camera.position.z = t * -0.001;
+  angle = scrollOffset * spiralSpeed; // Rotate based on scroll
+  let radius = baseRadius + scrollOffset * expansionRate; // Expand out
+
+  // Set new camera position in a spiral orbit
+  camera.position.x = radius * Math.cos(angle);
+  camera.position.z = radius * Math.sin(angle);
+  camera.position.y = Math.sin(angle * 0.5) * 10; // Smooth height oscillation
+
+  camera.lookAt(sphere.position); // Keep looking at the sphere
+
+  plane.rotation.x += 0.01;
+  plane.rotation.y += 0.01;
+  plane.rotation.z += 0.01;
 }
 
-document.body.onscroll = moveCamera
-
+document.body.onscroll = moveCamera;
 
 function animate () {
   requestAnimationFrame( animate );
