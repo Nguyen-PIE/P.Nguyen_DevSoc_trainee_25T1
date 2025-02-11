@@ -1,13 +1,3 @@
-/* canvas { 
-  position: fixed;
-  top: 0;
-  left: 0;
-}
-
-h1 {
-  color: white;
-} */
-
 :root {
   --dark-bg: rgba(15, 15, 15, 0.95);
   --spacing: 350px;
@@ -17,6 +7,15 @@ h1 {
   font-style: normal;
 }
 
+header p {
+  white-space: nowrap;
+  font-size: 2rem;
+  overflow: hidden;
+   text-align: center;
+  text-overflow: ellipsis;
+}
+
+
 h1 {
   font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
   position: absolute;
@@ -25,7 +24,7 @@ h1 {
   transform: translate(-50%, -50%);
   color: white;
   font-size: 2rem;
-  z-index: 10; /* Ensures it's above other elements */
+  z-index: 10;
 }
 
 canvas {
@@ -34,7 +33,7 @@ canvas {
   left: 0;
   width: 100%;
   height: 100%;
-  z-index: 1; /* Keeps the canvas in the background */
+  z-index: 1;
 }
 
 main {
@@ -64,39 +63,57 @@ canvas {
 }
 
 
+header {
+  background: var(--dark-bg);
+  grid-column: 2 / span 5;
+  font-size: 2.5rem;
+  padding: 2rem;
+  margin-bottom: var(--spacing);
+}
 
-  header {
-    background: var(--dark-bg);
-    grid-column: 2 / span 5;
-    font-size: 2.5rem;
-    padding: 2rem;
-    margin-bottom: var(--spacing);
-  }
+section {
+  grid-column: 2 / 8;
+  padding: 1rem;
+  background: var(--dark-bg);
+  font-size: 1.25rem;
+  line-height: 1.5;
+  margin-bottom: var(--spacing);
+}
 
-  section {
-    grid-column: 2 / 8;
-    padding: 1rem;
-    background: var(--dark-bg);
-    font-size: 1.25rem;
-    line-height: 1.5;
-    margin-bottom: var(--spacing);
-  }
+blockquote {
+  margin: 0;
+  padding: 0;
+  grid-column: 2 / span 9;
+  margin-bottom: var(--spacing);
+}
 
-  blockquote {
-    margin: 0;
-    padding: 0;
-    grid-column: 2 / span 9;
-    margin-bottom: var(--spacing);
-  }
+blockquote p {
+  color: black;
+  background-color: white;
+  font-size: 3.5rem;
+  display: inline;
+  line-height: 1;
+}
 
-  blockquote p {
-    color: black;
-    background-color: white;
-    font-size: 4rem;
-    display: inline;
-    line-height: 1;
-  }
+.left {
+  grid-column: 6 / 12;
+}
 
-  .left {
-    grid-column: 6 / 12;
-  }
+header p a {
+  text-decoration: none;
+  border: none;
+  outline: none;
+}
+
+
+header p a img {
+  width: 35;
+  height: 35px;
+  object-fit: contain;
+  margin: 0 10px;
+  transition: transform 0.3s ease-in-out;
+}
+
+header p a img:hover {
+  transform: scale(1.2);
+}
