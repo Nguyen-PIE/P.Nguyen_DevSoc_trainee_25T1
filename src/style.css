@@ -8,11 +8,12 @@
 }
 
 header p {
-  white-space: nowrap;
+  white-space: normal;
   font-size: 2rem;
-  overflow: hidden;
-   text-align: center;
-  text-overflow: ellipsis;
+  text-align: center;
+  overflow: visible;
+  text-overflow: clip;
+  word-wrap: break-word;
 }
 
 
@@ -67,7 +68,7 @@ header {
   background: var(--dark-bg);
   grid-column: 2 / span 5;
   font-size: 2.5rem;
-  padding: 2rem;
+  padding: 1rem;
   margin-bottom: var(--spacing);
 }
 
@@ -92,7 +93,7 @@ blockquote p {
   background-color: white;
   font-size: 3.5rem;
   display: inline;
-  line-height: 1;
+  line-height: 1.1;
 }
 
 .left {
