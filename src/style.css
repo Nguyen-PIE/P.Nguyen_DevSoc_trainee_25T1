@@ -14,7 +14,9 @@ header p {
   overflow: visible;
   text-overflow: clip;
   word-wrap: break-word;
+  font-family: 'Bungee Hairline', sans-serif;
 }
+
 
 
 h1 {
