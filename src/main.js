@@ -20,8 +20,8 @@ camera.position.setZ(30);
 renderer.render(scene, camera);
 
 // Create Earth
-const earthTexture = new THREE.TextureLoader().load('https://github.com/Nguyen-PIE/P.Nguyen_DevSoc_trainee_25T1/blob/main/public/earth.jpg');
-const mountainsTexture = new THREE.TextureLoader().load('https://github.com/Nguyen-PIE/P.Nguyen_DevSoc_trainee_25T1/blob/main/public/mountains.jpg');
+const earthTexture = new THREE.TextureLoader().load('/P.Nguyen_DevSoc_trainee_25T1/earth.jpg');
+const mountainsTexture = new THREE.TextureLoader().load('/P.Nguyen_DevSoc_trainee_25T1/mountains.jpg');
 const geometry = new THREE.SphereGeometry(15, 64, 32);
 const material = new THREE.MeshStandardMaterial({ map: earthTexture, normalMap: mountainsTexture });
 const sphere = new THREE.Mesh(geometry, material);
@@ -57,7 +57,7 @@ Array(700).fill().forEach(addStar);
 
 // Create Floating Head (Image Plane)
 const floatingHead = new THREE.PlaneGeometry(12, 12);
-const headTexture = new THREE.TextureLoader().load('https://github.com/Nguyen-PIE/P.Nguyen_DevSoc_trainee_25T1/blob/main/public/me.jpg');
+const headTexture = new THREE.TextureLoader().load('/P.Nguyen_DevSoc_trainee_25T1/me.jpg');
 const headMaterial = new THREE.MeshStandardMaterial({ 
   map: headTexture, 
   side: THREE.DoubleSide
@@ -68,7 +68,7 @@ plane.visible = false; // Initially hidden
 scene.add(plane);
 
 // Create the Sun (Bright Sphere)
-const sunTexture = new THREE.TextureLoader().load('https://github.com/Nguyen-PIE/P.Nguyen_DevSoc_trainee_25T1/blob/main/public/sun_texture.jpg');
+const sunTexture = new THREE.TextureLoader().load('/P.Nguyen_DevSoc_trainee_25T1/sun_texture.jpg');
 const sunGeometry = new THREE.SphereGeometry(40, 64, 32);
 const sunMaterial = new THREE.MeshStandardMaterial({
   map: sunTexture,
