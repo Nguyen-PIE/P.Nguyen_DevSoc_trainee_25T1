@@ -20,7 +20,7 @@ camera.position.setZ(30);
 renderer.render(scene, camera);
 
 // Create Earth
-const earthTexture = new THREE.TextureLoader().load('./earth.jpg');
+const earthTexture = new THREE.TextureLoader().load('https://github.com/Nguyen-PIE/P.Nguyen_DevSoc_trainee_25T1/blob/main/public/earth.jpg');
 const mountainsTexture = new THREE.TextureLoader().load('./mountains.jpg');
 const geometry = new THREE.SphereGeometry(15, 64, 32);
 const material = new THREE.MeshStandardMaterial({ map: earthTexture, normalMap: mountainsTexture });
